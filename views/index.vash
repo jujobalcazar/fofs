@@ -1,0 +1,7 @@
+@html.extend('layout', function(model){
+	@html.block('content', function(model){
+		<h1>@model.body</h1>
+		
+		<p>Frodo</p>
+	})
+})

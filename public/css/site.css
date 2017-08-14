@@ -1,0 +1,40 @@
+
+.header{
+	width:100%;
+	height:200px;
+	background-color:#0B6C29; 
+	color:#fff;
+	
+}
+
+.body{
+	margin:20px;
+	
+}
+
+.nav{
+	width:100%;
+	height:50px;
+	background-color:#000; 
+	text-align:right;
+}  
+
+.profile
+{
+	
+}
+
+.nav2{
+	text-align:center;  
+	font-size:32px;	
+	padding-top:50px
+}
+
+.title{
+	color:#2e6da4;
+}
+.headerTable{
+	background-color:#2e6da4;
+	line-height: 30px;
+	color: #fff;
+}
