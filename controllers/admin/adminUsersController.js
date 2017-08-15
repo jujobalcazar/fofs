@@ -9,7 +9,7 @@
 				// Error or not we render the page with err and results.
 				res.render("admin/users",
 					{
-						title: "Admin | Users List", 
+						title: "Users List",
 						error: err,
 						users: results //"The users list"
 					});

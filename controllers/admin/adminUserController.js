@@ -11,7 +11,7 @@
             // Error or not we render the page with err and results.
             res.render("admin/user",
                 {
-                    title: "Admin | Create new user",
+                    title: "Create new user",
                     error: null,
                     user: user //"The users list"
                 });
@@ -64,7 +64,7 @@
                 // Error or not we render the page with err and results.
                 res.render("admin/user",
                     {
-                        title: "Admin | User",
+                        title: "User",
                         error: err,
                         user: result //"The users list"
                     });
