@@ -109,6 +109,17 @@
         });
     };
 
+    data.addPost = function(userId, thePost, next){
+        database.getDb(function(err, db) {
+            if (err) {
+                next(err);
+            }
+            else {
+                db.users.update( {_id: ObjectId(userId)}, { $push: {posts: thePost } }, next );
+            }
+        });
+    };
+
     function seedDatabase(){
         database.getDb(function(err, db){
             if(err){
