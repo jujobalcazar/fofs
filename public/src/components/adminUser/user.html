@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md-4" style="width:300px;padding:25px;border:solid 1px #0B6C29;border-radius: 15px;">
+        <form action="/admin/user/" method="post">
+            <input type="hidden" id="id" name="id" value="@model.user._id">
+
+            <div class="form-group">
+                <label >Name Angular</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" ng-model="User.name">
+            </div>
+            <div class="form-group">
+                <label >Email address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" ng-model="User.email">
+            </div>
+            <div class="form-group">
+                <label >Age</label>
+                <input type="number" class="form-control" id="age" name="age" ng-model="User.age">  <!-- type="number" no funciona -->
+            </div>
+            <div class="form-group">
+                <label >Status</label>
+                <select class="form-control" id="status" name="status" ng-model="User.status">
+                    <option value="0" >Inactive</option>
+                    <option value="1" >Active</option>
+                </select>
+            </div>
+
+            <a href="#" class="btn btn-default" ng-click="goback()">Back</a>
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+        </form>
+    </div>
+
+</div>

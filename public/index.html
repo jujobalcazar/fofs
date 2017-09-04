@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <title>ADMIN | @model.title</title>
+    <title>Fool Of Fulls</title>
     <link href="/css/site.css" rel="stylesheet"/>
     <link href="/css/bootstrap.min.css" rel="stylesheet"/>
 
@@ -12,24 +12,24 @@
         <div style="padding:8px 5px 0 0"><img height="35" width="35" src="/img/profile.png" /></div>
     </div>
 
-    @html.block("header")
-
     <div class="nav2">FULL OF FOOLS&nbsp;&nbsp;&nbsp;FULL OF HEROS</div>
 </div>
 
-<div class="body">
-    @html.block("content")
+<div class="body" ng-view>
+
 </div>
 
 <div class="footer">
-    @html.block("footer")
 </div>
 
 <script src="/lib/jquery.min.js"></script>
 <script src="/lib/bootstrap.min.js"></script>
 <script src="/lib/angular.min.js"></script>
 <script src="/lib/angular-route.min.js"></script>
-<script src="/js/adminapp.js"></script>
-@html.block("scripts")
+<script src="/src/adminapp.js"></script>
+
+<script src="/src/components/adminUser/AdminUserController.js"></script>
+<script src="/src/components/adminUsers/AdminUsersController.js"></script>
+
 </body>
 </html>
