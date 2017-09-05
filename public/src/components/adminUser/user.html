@@ -24,9 +24,19 @@
             </div>
 
             <a href="#" class="btn btn-default" ng-click="goback()">Back</a>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <a class="btn btn-primary" ng-click="submitUser()">Submit</a>
 
         </form>
     </div>
+
+
+    <div class="col-md-8" ng-show="showPosts" style="padding:25px;margin-left:20px;">
+        <p class="title">Posts:</p>
+
+        <div class="row" ng-repeat="post in User.posts">
+            {{post.text}}
+        </div>
+    </div>
+
 
 </div>

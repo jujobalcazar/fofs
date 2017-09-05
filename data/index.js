@@ -94,6 +94,26 @@
         });
     };
 
+    data.deleteUser = function(id, next){
+        database.getDb(function(err, db){
+            if(err){
+                next(err);
+            }
+            else {
+                try{
+                    console.log("delete one: " + id);
+                    db.users.deleteOne({"_id" : ObjectId(id)});
+                    next(null);
+                }
+                catch(e){
+                    next(e.message);
+                }
+
+            }
+        });
+    };
+
+    /*
     data.desactivateUser = function(user, next){
         database.getDb(function(err, db){
             if(err){
@@ -108,6 +128,7 @@
             }
         });
     };
+    */
 
     data.addPost = function(userId, thePost, next){
         database.getDb(function(err, db) {
