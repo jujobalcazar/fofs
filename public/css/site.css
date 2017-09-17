@@ -8,8 +8,7 @@
 }
 
 .body{
-	margin:20px;
-	
+
 }
 
 [ng-click],
@@ -23,7 +22,31 @@
 	height:50px;
 	background-color:#000; 
 	text-align:right;
-}  
+}
+
+.alternover:hover {
+	background-color:#eee;
+}
+
+div.adminMenu{
+	color:#fff;
+	size:32px;
+	line-height: 60px;
+}
+
+div.adminMenu:hover {
+	background-color:#777;
+}
+
+div.adminMenu_selected {
+	border-left:solid 8px #0B6C29;
+	padding-left:15px;
+	background-color: #777;
+}
+
+div.adminMenu_unselected {
+	padding-left: 23px;
+}
 
 .profile
 {

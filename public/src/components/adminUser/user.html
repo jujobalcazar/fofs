@@ -1,42 +1,61 @@
-<div class="row">
-    <div class="col-md-4" style="width:300px;padding:25px;border:solid 1px #0B6C29;border-radius: 15px;">
-        <form action="/admin/user/" method="post">
-            <input type="hidden" id="id" name="id" value="@model.user._id">
 
-            <div class="form-group">
-                <label >Name Angular</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" ng-model="User.name">
-            </div>
-            <div class="form-group">
-                <label >Email address</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" ng-model="User.email">
-            </div>
-            <div class="form-group">
-                <label >Age</label>
-                <input type="number" class="form-control" id="age" name="age" ng-model="User.age">  <!-- type="number" no funciona -->
-            </div>
-            <div class="form-group">
-                <label >Status</label>
-                <select class="form-control" id="status" name="status" ng-model="User.status">
-                    <option value="0" >Inactive</option>
-                    <option value="1" >Active</option>
-                </select>
-            </div>
+    <div class="col-md-2" style="background-color: #333;height:800px;padding: 0px;">
+        <div class="adminMenu adminMenu_selected">Profile</div>
+        <div class="adminMenu adminMenu_unselected" ng-click="linkPosts()">Posts</div>
+        <div class="adminMenu adminMenu_unselected" ng-click="linkContacts()">Contacts</div>
+    </div>
 
-            <a href="#" class="btn btn-default" ng-click="goback()">Back</a>
-            <a class="btn btn-primary" ng-click="submitUser()">Submit</a>
+    <div class="col-md-5" style="padding-top: 20px;">
+        <div style="padding:25px;border:solid 1px #0B6C29;border-radius: 15px;">
+            <form method="post">
+                <input type="hidden" id="id" name="id" value="@model.user._id">
 
-        </form>
+                <div class="form-group">
+                    <label >Name Angular</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" ng-model="User.name">
+                </div>
+                <div class="form-group">
+                    <label >Email address</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" ng-model="User.email">
+                </div>
+                <div class="form-group">
+                    <label >Age</label>
+                    <input type="number" class="form-control" id="age" name="age" ng-model="User.age">  <!-- type="number" no funciona -->
+                </div>
+                <div class="form-group">
+                    <label >Status</label>
+                    <select class="form-control" id="status" name="status" ng-model="User.status">
+                        <option value="0" >Inactive</option>
+                        <option value="1" >Active</option>
+                    </select>
+                </div>
+
+                <a href="#" class="btn btn-default" ng-click="goback()">Back</a>
+                <a class="btn btn-primary" ng-click="submitUser()">Submit</a>
+
+            </form>
+        </div>
+
     </div>
 
 
-    <div class="col-md-8" ng-show="showPosts" style="padding:25px;margin-left:20px;">
-        <p class="title">Posts:</p>
+    <div class="col-md-5" ng-show="showPosts" style="padding-top: 20px;" >
+        <div style="padding:0 25px 25px 25px;border:solid 1px #0B6C29;border-radius: 15px;">
+            <h3 class="title ng-binding">Last Posts:</h3>
+            <ul>
+                <li ng-repeat="post in User.posts">
+                    {{post.text}}
+                </li>
+            </ul>
 
-        <div class="row" ng-repeat="post in User.posts">
-            {{post.text}}
+            <div style="width:100%;text-align: right;">
+                <a class="btn btn-primary" ng-click="linkPosts()">All posts</a>
+            </div>
+
         </div>
     </div>
 
 
-</div>
+
+
+

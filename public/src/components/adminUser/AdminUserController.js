@@ -4,13 +4,22 @@
 (function () {
     function AdminUserController($scope, $http, $location, $routeParams) {  //$routeParams, service from ngroute module.
         // Properties
-        let currentId = $routeParams.id;
+        let userId = $routeParams.id;
 
         $scope.showPosts = false;
 
         // Methods
         $scope.goback = () => {
-            $location.path("/admin/users");
+            $location.path("/admin/users/");
+        }
+
+        $scope.linkPosts = () => {
+            $location.path("/admin/user/" + userId + "/posts");
+        }
+
+        $scope.linkContacts = () => {
+            //$location.path("/admin/usercontacts/" + userId);
+            $location.path("/admin/user/" + userId);
         }
 
         // Post User
@@ -20,9 +29,9 @@
                 return;
             }
 
-            if(currentId != undefined){
+            if(userId != undefined){
                 // Update mode
-                $http.post("/api/user/" + currentId, JSON.stringify($scope.User))
+                $http.post("/api/user/" + userId, JSON.stringify($scope.User))
                     .then(function(response) {
                         alert("User was updated succesfully");
                     }, function (response) {
@@ -41,7 +50,7 @@
             }
         }
 
-        var userIsValid = () => {
+        let userIsValid = () => {
             if($scope.User == undefined){
                 alert("User form is not complete");
                 return false;
@@ -65,8 +74,8 @@
             return true;
         }
 
-        var loadInfo = () => {
-            $http.get("/api/user/" + currentId)
+        let loadInfo = () => {
+            $http.get("/api/user/" + userId)
                 .then(function(response) {
 
                     var user = {
@@ -85,7 +94,7 @@
                 });
         };
 
-        if(currentId != undefined){
+        if(userId != undefined){
             loadInfo();
         }
     }

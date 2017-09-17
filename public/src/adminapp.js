@@ -18,6 +18,18 @@
                 templateUrl: "/src/components/adminUser/user.html",
                 controller: "AdminUserController"
             })
+            .when("/admin/user/:id/posts", {
+                templateUrl: "/src/components/adminUserPosts/userposts.html",
+                controller: "AdminUserPostsController"
+            })
+            .when("/admin/user/:id/post", {
+                templateUrl: "/src/components/adminUserPost/userpost.html",
+                controller: "AdminUserPostController"
+            })
+            .when("/admin/user/:id/post/:postid", {
+                templateUrl: "/src/components/adminUserPost/userpost.html",
+                controller: "AdminUserPostController"
+            })
             .otherwise({redirectTo: "/admin/users"});
 
     });

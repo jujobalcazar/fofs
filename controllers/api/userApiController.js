@@ -8,8 +8,9 @@
 
     userApiController.init = function(app){
 
-        app.get("/api/user/:id",function(req,res){
-            data.getUser(req.params.id, function(err, result){
+        app.get("/api/user/:id/",function(req,res){
+
+            data.getUser(req.params.id, req.query, function(err, result){
                 if(err){
                     res.send(400, err);
                 }else{

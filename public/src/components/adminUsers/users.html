@@ -1,4 +1,4 @@
-
+<div style="padding: 20px;">
 <div class="row">
     <div class="col-md-6">
         <h3 class="title">View: {{currentView}}</h3></div>
@@ -18,7 +18,7 @@
 </div>
 
 
-<div class="row" ng-repeat="User in Users">
+<div class="row alternover" ng-repeat="User in Users">
     <div class="col-md-3" style="padding:10px 10px 10px 30px"><a ng-click="openUser(User._id)">{{User._id}}</a></div>
     <div class="col-md-2" style="padding:10px 10px 10px 30px">{{User.name}}</div>
     <div class="col-md-3" style="padding:10px 10px 10px 30px">{{User.email}}</div>
@@ -28,6 +28,7 @@
     <div class="col-md-1" style="padding:5px 10px;text-align:right;">
         <a class="btn btn-danger" href="" ng-click="deleteUser(User._id)">X</a>
     </div>
+</div>
 </div>
 
 

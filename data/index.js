@@ -24,25 +24,36 @@
         });
     };
 
-    data.getUser = function(id, next){
+    data.getUser = function(id, params, next){
+
         database.getDb(function(err, db) {
             if(err){
                 next(err, null);
             }
             else{
-                // Get only 1 user  "598905e51bd2ae3ad869c812"
-                db.users.findOne({_id: ObjectId(id)}, function(err, result){
-                    if(err){
-                        next(err, null);
-                    }
-                    else {
-                        next(null, result);
-                    }
-                });
-
+                // Get only 1 user all posts.
+                if(params.allposts == 1){
+                    db.users.findOne({_id: ObjectId(id)}, function (err, result) {
+                        if (err) {
+                            next(err, null);
+                        }
+                        else {
+                            next(null, result);
+                        }
+                    });
+                }
+                else { // Get only 1 user and 3 posts.
+                    db.users.findOne({_id: ObjectId(id)}, {posts: {$slice: -3}}, function (err, result) {
+                        if (err) {
+                            next(err, null);
+                        }
+                        else {
+                            next(null, result);
+                        }
+                    });
+                }
             }
         });
-
     };
 
     data.createNewUser = function(user, next){
@@ -130,13 +141,60 @@
     };
     */
 
+    data.getPost = function(postId, params, next){
+        var userId = params.userId;
+
+        database.getDb(function(err, db) {
+            if(err){
+                next(err, null);
+            }
+            else {
+                db.users.findOne({_id: ObjectId(userId)}, {posts: {$elemMatch: {_id: ObjectId(postId)}}}, function (err, result){
+                    if (err) {
+                        next(err, null);
+                    }
+                    else {
+                        next(null, result);
+                    }
+                });
+            }
+
+        });
+    };
+
     data.addPost = function(userId, thePost, next){
         database.getDb(function(err, db) {
             if (err) {
                 next(err);
             }
             else {
-                db.users.update( {_id: ObjectId(userId)}, { $push: {posts: thePost } }, next );
+                // Create Mode
+                thePost._id = new ObjectId();
+                db.users.update( {_id: ObjectId(userId)},
+                    { $push: {posts: thePost } }, next );
+            }
+        });
+    };
+
+    data.updatePost = function(userId, thePost, next){
+        database.getDb(function(err, db) {
+            if (err) {
+                next(err);
+            }
+            else {
+                console.log("userId: " + userId);
+                console.log("update post: " + thePost._id);
+
+                db.users.update( {_id: ObjectId(userId), "posts._id": ObjectId(thePost._id)},
+                    { $set: { "posts.$.text" : thePost.text, "posts.$.video" : thePost.video, "posts.$.image" : thePost.image  } }, next );
+
+                /*
+                 db.students.update(
+                 { _id: 4, "grades.grade": 85 },   { $set: { "grades.$.std" : 6 } }
+                 )
+*/
+
+
             }
         });
     };
