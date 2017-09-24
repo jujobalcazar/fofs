@@ -6,6 +6,10 @@
 
     adminApp.config(function($routeProvider) {
         $routeProvider
+            .when("/admin/login", {
+                templateUrl: "/src/components/adminLogin/login.html",
+                controller: "AdminLoginController"
+            })
             .when("/admin/users", {
                 templateUrl: "/src/components/adminUsers/users.html",
                 controller: "AdminUsersController"
@@ -30,7 +34,7 @@
                 templateUrl: "/src/components/adminUserPost/userpost.html",
                 controller: "AdminUserPostController"
             })
-            .otherwise({redirectTo: "/admin/users"});
+            .otherwise({redirectTo: "/admin/login"});
 
     });
 }) ();
