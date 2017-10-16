@@ -18,6 +18,18 @@
                 templateUrl: "/src/components/signupCode/signupcode.html",
                 controller: "SignUpCodeController"
             })
+            .when("/forgotpassword", {
+                templateUrl: "/src/components/forgotpassword/forgotpassword.html",
+                controller: "ForgotPasswordController"
+            })
+            .when("/forgotpasswordcode", {
+                templateUrl: "/src/components/forgotpasswordCode/forgotpasswordcode.html",
+                controller: "ForgotPasswordCodeController"
+            })
+            .when("/dashboard", {
+                templateUrl: "/src/components/dashboard/dashboard.html",
+                controller: "DashboardController"
+            })
             .otherwise({redirectTo: "/login"});
 
     });
