@@ -8,6 +8,7 @@
     // var adminUserController = require("./admin/adminUserController.js");
 
     //Api controllers
+    var loginApiController = require("./api/loginApiController.js");
 	var usersApiController = require("./api/usersApiController.js");
     var userApiController = require("./api/userApiController.js");
     var postApiController = require("./api/postApiController.js");
@@ -17,6 +18,7 @@
 		homeController.init(app);
 		loginController.init(app);
 
+        loginApiController.init(app);
         usersApiController.init(app);
         userApiController.init(app);
         postApiController.init(app);

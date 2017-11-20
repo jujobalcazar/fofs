@@ -2,7 +2,8 @@
  * Created by BALJUA on 20/09/2017.
  */
 (function (){
-    var app = angular.module("mainApp", ['ngRoute']);
+    // All dependencies has to be added to the module
+    var app = angular.module("mainApp", ['ngRoute', 'ngCookies']);
 
     app.config(function($routeProvider) {
         $routeProvider

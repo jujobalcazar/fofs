@@ -2,12 +2,9 @@
  * Created by BALJUA on 02/09/2017.
  */
 (function () {
-    function ForgotPasswordController($scope, $http, $location) {
-        var poolData = {
-            UserPoolId : 'us-west-2_Sygc95OQO', // Your user pool id here
-            ClientId : '2f0pdsvug1e0d3ihm9863868u6' // Your client id here
-        };
-        var userPool = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserPool(poolData);
+    function ForgotPasswordController($scope, $http, $location, ConstantService) {
+
+        var userPool = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserPool(ConstantService.poolData);
 
         $scope.submitForgotPassword = () => {
             var userData = {
@@ -29,19 +26,11 @@
                     alert(err);
                 }
 
-                // We need a new Controller that ask for verification code and new password!!
-                //Optional automatic callback
-                /*inputVerificationCode: function(data) {
-                    console.log('Code sent to: ' + data);
-                    var verificationCode = prompt('Please input verification code ' ,'');
-                    var newPassword = prompt('Enter new password ' ,'');
-                    cognitoUser.confirmPassword(verificationCode, newPassword, this);
-                }*/
             });
         }
 
     }
 
-    angular.module("mainApp").controller("ForgotPasswordController", ForgotPasswordController);
+    angular.module("mainApp").controller("ForgotPasswordController", ['$scope', '$http', '$location', 'ConstantService', ForgotPasswordController]);
 
 })();

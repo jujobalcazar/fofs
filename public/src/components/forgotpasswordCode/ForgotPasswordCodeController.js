@@ -2,12 +2,9 @@
  * Created by BALJUA on 02/09/2017.
  */
 (function () {
-    function ForgotPasswordCodeController($scope, $http, $location) {
-        var poolData = {
-            UserPoolId : 'us-west-2_Sygc95OQO', // Your user pool id here
-            ClientId : '2f0pdsvug1e0d3ihm9863868u6' // Your client id here
-        };
-        var userPool = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserPool(poolData);
+    function ForgotPasswordCodeController($scope, $http, $location, ConstantService) {
+
+        var userPool = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserPool(ConstantService.poolData);
 
         var username = undefined;
         var loadUser = () =>{
@@ -45,6 +42,6 @@
 
     }
 
-    angular.module("mainApp").controller("ForgotPasswordCodeController", ForgotPasswordCodeController);
+    angular.module("mainApp").controller("ForgotPasswordCodeController", ['$scope', '$http', '$location', 'ConstantService', ForgotPasswordCodeController]);
 
 })();
