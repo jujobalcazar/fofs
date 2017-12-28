@@ -30,12 +30,16 @@ app.use(function (req, res, next) {
     next();
 });
 
-/*
-app.use("/api", function (req, res, next) {
-     var originalUrl = req.originalUrl;
-     console.log('Authenticated Request URL:', req.originalUrl);
-     console.log('Authenticated Request Type:', req.method);
 
+app.use("/api", function (req, res, next) {
+    var originalUrl = req.originalUrl;
+    console.log('Authenticated Request URL:', req.originalUrl);
+    console.log('Authenticated Request Type:', req.method);
+
+    // The method next is replacing all the commented code.
+    next();
+
+     /*
      if(originalUrl.indexOf("login") !== -1){
          next();
      }
@@ -56,8 +60,8 @@ app.use("/api", function (req, res, next) {
              res.locals.user = response;
              next();
          });
-     }
-});*/
+     }*/
+});
 
 // ***************************************************************************************************
 

@@ -1,5 +1,7 @@
 (function(controllers){
-	
+
+    // These 2 controllers "home and login" are not used by the Angular application.
+    // They are keep just to show how node && express return views to the browser
 	var homeController = require("./homeController.js");
 	var loginController = require("./loginController.js");
 	
